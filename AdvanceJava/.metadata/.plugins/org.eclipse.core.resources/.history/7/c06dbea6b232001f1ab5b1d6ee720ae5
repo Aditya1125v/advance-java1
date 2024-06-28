@@ -1,0 +1,22 @@
+package com.rays.connection;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.Statement;
+
+
+public class UpdateQuery {
+public static void main(String[] args) throws Exception {
+	//step for Driver-Loader
+	Class.forName("com.mysql.cj.jdbc.Driver");
+	Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/School","root","root");
+	Statement stmt = conn.createStatement();
+	System.out.println("Connection is successfully");
+	
+		//"insert into studen_detial values(1, 104, 'himanshu', 'hydrabad', 8735344782, 9),(2, 105, 'ritik', 'delhi', 9898762156, 12)"); 
+
+		  // update query
+	      int i = stmt.executeUpdate("create table Students(id int primary key, Roll_no int, Name varchar(25), Address varchar(60), DOB Date, Mobile_no long"); 
+		 System.out.println("updates "+i);
+		 }
+}

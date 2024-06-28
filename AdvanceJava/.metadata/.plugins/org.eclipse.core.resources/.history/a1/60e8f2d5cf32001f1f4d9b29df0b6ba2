@@ -1,0 +1,62 @@
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.Statement;
+
+public class CreateMethodsOfStatements {
+	public static void main(String[] args) throws Exception {
+	    InsertData();
+		//CreateTable();
+	}
+
+	/*
+	 * public static void CreateTable() throws Exception { // driver loader
+	 * Class.forName("com.mysql.cj.jdbc.Driver"); // call connection Connection conn
+	 * = DriverManager.getConnection("jdbc:mysql://localhost:3306/Facebook", "root",
+	 * "root"); Statement stmt = conn.createStatement(); int i = stmt.executeUpdate(
+	 * "create table Users(id int primary key, First_Name varchar(50), Last_Name varchar(50), DOB Date, Login_Id varchar(50), Passward varchar(50), Mobile_no long"
+	 * ); System.out.println("update " + i); }
+	 */
+	public static void CreateTable() throws Exception { 
+	    // Load the MySQL JDBC driver
+	    Class.forName("com.mysql.cj.jdbc.Driver");
+	    
+	    // Establish a connection to the database
+	    Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/Facebook", "root", "root");
+	    
+	    // Create a statement object to execute SQL queries
+	    Statement stmt = conn.createStatement();
+	    
+	    // Define the SQL query to create the Users table
+	    String sql = "CREATE TABLE Users ("
+	               + "id INT PRIMARY KEY, "
+	               + "First_Name VARCHAR(50), "
+	               + "Last_Name VARCHAR(50), "
+	               + "DOB DATE, "
+	               + "Login_Id VARCHAR(50), "
+	               + "Password VARCHAR(50), "
+	               + "Mobile_no BIGINT)";
+	    
+	    // Execute the SQL query to create the table
+	    int i = stmt.executeUpdate(sql);
+	    
+	    // Print the result of the table creation
+	    System.out.println("update " + i);
+	    
+	    // Close the statement and connection to free up resources
+	    stmt.close();
+	    conn.close();
+	}
+
+	
+	  public static void InsertData() throws Exception {
+		  //driver loader
+	 
+	  Class.forName("com.mysql.cj.jdbc.Driver"); 
+	  //call connection 
+	  Connection conn= DriverManager.getConnection("jdbc:mysql://localhost:3306/Facebook", "root", "root"); 
+	  Statement stmt =conn.createStatement();
+	  int b = stmt.executeUpdate("insert into users values(1, 'Raj', 'singh', '2000-03-23', 'RajSingh@gmail.com', 'Raj@123', 8989891234)");
+	  
+       System.out.println("update "+b);
+	 
+}}

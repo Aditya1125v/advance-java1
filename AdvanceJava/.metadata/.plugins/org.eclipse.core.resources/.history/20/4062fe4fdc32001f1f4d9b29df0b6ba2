@@ -1,0 +1,37 @@
+package preparedStatement;
+
+import java.util.Date;
+
+public class ClassBeans {
+	private int id;
+	private String First_name;
+	private String Last_name;
+	private Date Dob;
+	private String Login_Id;
+	private String Password;
+	private Long Mobile_No;
+	public void setId(int id) {
+		this.id = id;
+	}
+	public void setFirst_name(String first_name) {
+		First_name = first_name;
+	}
+	public void setLast_name(String last_name) {
+		Last_name = last_name;
+	}
+	public void setDob(Date dob) {
+		Dob = dob;
+	}
+	public void setLogin_Id(String login_Id) {
+		Login_Id = login_Id;
+	}
+	public void setPassword(String password) {
+		Password = password;
+	}
+	public void setMobile_No(Long mobile_No) {
+		Mobile_No = mobile_No;
+	}
+	
+	
+
+}

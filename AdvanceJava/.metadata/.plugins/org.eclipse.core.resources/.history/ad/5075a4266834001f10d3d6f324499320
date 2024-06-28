@@ -1,0 +1,47 @@
+package preparedStatement;
+
+import java.text.SimpleDateFormat;
+
+public class TestModel {
+	public static void main(String[] args) throws Exception {
+		testadd();
+		// testupdate();
+		// testdelete();
+	}
+
+	private static void testadd() throws Exception {
+		SimpleDateFormat sr = new SimpleDateFormat("yyyy-MM-dd");
+		UserBean bean = new UserBean();
+		/*
+		 * bean.setId(9);
+		 */ bean.setFirst_name("rasidya");
+		bean.setLast_name("tanuja");
+		bean.setDob(sr.parse("2011-01-19"));
+		bean.setLogin_Id("tanujasabrother@gmail.com");
+		bean.setPassword("tanuormanu");
+		bean.setMobile_No(9898816251L);
+
+		UserModel1 model = new UserModel1();
+
+		model.add(bean);
+	}
+
+	private static void testupdate() throws Exception {
+		UserBean bean = new UserBean();
+		bean.setId(9);
+		bean.setFirst_name("druvi");
+
+		UserModel1 model = new UserModel1();
+
+		model.update(bean);
+	}
+
+	private static void testdelete() throws Exception {
+		UserBean bean = new UserBean();
+		bean.setId(9);
+
+		UserModel1 model = new UserModel1();
+
+		model.delete(bean);
+	}
+}

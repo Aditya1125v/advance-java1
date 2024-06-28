@@ -1,0 +1,5 @@
+ckage practices;
+
+public @interface userModel {
+
+}

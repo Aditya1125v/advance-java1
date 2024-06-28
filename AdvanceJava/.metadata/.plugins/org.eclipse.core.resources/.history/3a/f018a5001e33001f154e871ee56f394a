@@ -1,0 +1,30 @@
+package preparedStatement;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+
+
+public class UserModel1 {
+	public static void main(String[] args) {
+		public static void add(ClassBean Abhi)throws Exception{
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			Connection conn=DriverManager.getConnection("jdbc:msql://localhost:3306/facebook");
+			PreparedStatement pstmt =conn.prepareStatement("insert into users values(?, ?, ?, ?, ?, ?, ?)");
+			
+		    pstmt.setInt(1, x);
+		    pstmt.setString(2, x);
+		    pstmt.setString(3, x);
+		    pstmt.setDate(4, x);
+		    pstmt.setString(5, x);
+		    pstmt.setString(6, x);
+		    pstmt.setLong(7, x);
+		    int i =pstmt.executeUpdate();
+		    System.out.println("data inserted successfully.. " + i);
+
+			
+			
+		}
+	}
+
+}

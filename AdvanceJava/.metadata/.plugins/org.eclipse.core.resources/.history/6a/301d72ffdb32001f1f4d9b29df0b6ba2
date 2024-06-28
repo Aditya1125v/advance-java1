@@ -1,0 +1,16 @@
+package PredataStatement;
+
+import java.util.Date;
+
+public class ClassBeans {
+	private int id;
+	private String First_name;
+	private String Last_name;
+	private Date Dob;
+	private String Login_Id;
+	private String Password;
+	private Long Mobile_No;
+	
+	
+
+}

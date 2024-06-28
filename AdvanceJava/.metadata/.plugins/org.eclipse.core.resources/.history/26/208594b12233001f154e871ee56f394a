@@ -1,0 +1,28 @@
+package preparedStatement;
+
+import java.text.SimpleDateFormat;
+
+public class TestModel {
+	public static void main(String[] args) throws Exception {
+		testadd();
+	}
+	private static void testadd() throws Exception{
+		SimpleDateFormat sr=new SimpleDateFormat("yyyy-MM-dd");
+		UserBean m=new UserBean();
+		m.setId(10);
+		m.setFirst_name("Aditya");
+		m.setLast_name("Verma");
+		m.setDob(sr.parse("2004-09-25"));
+		m.setLogin_Id("adityaverma1125v@gmail.com");
+		m.setPassword("Adi@123");
+		m.setMobile_No(8359817216L);
+		
+      UserModel1 model = new UserModel1();
+		
+		   model.add(m);
+
+		
+		
+	}
+
+}

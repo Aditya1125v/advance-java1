@@ -1,0 +1,77 @@
+package preparedStatement;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import com.mysql.cj.jdbc.Driver;
+import com.mysql.cj.x.protobuf.MysqlxPrepare.Prepare;
+import com.mysql.cj.xdevapi.Result;
+
+public class UserModel1 {
+
+	public void add(UserBean bean) throws Exception {
+		Class.forName("com.mysql.cj.jdbc.Driver");
+		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/facebook", "root", "root");
+		PreparedStatement pstmt = conn.prepareStatement("insert into users values(?, ?, ?, ?, ?, ?, ?)");
+
+		pstmt.setInt(1, generateid());
+		pstmt.setString(2, bean.getFirst_name());
+		pstmt.setString(3, bean.getLast_name());
+		pstmt.setDate(4, new java.sql.Date(bean.getDob().getTime()));
+		pstmt.setString(5, bean.getLogin_Id());
+		pstmt.setString(6, bean.getPassword());
+		pstmt.setLong(7, bean.getMobile_No());
+		int i = pstmt.executeUpdate();
+		System.out.println("data inserted successfully.. " + i);
+	}
+
+	public void update(UserBean bean) throws Exception {
+		Class.forName("com.mysql.cj.jdbc.Driver");
+		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/facebook", "root", "root");
+		PreparedStatement pstmt = conn.prepareStatement("update users set First_Name = ? where id = ?");
+
+		pstmt.setString(1, bean.getFirst_name());
+		pstmt.setInt(2, bean.getId());
+
+		int i = pstmt.executeUpdate();
+		System.out.println("data inserted successfully.. " + i);
+
+	}
+	public void delete(UserBean bean) throws Exception {
+		Class.forName("com.mysql.cj.jdbc.Driver");
+		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/facebook", "root", "root");
+		PreparedStatement pstmt = conn.prepareStatement("delete from users where id =?");
+		pstmt.setInt(1,bean.getId());
+		
+		int i = pstmt.executeUpdate();
+		System.out.println("delete data successfully.. " + i);
+	}
+	
+	public int generateid()throws Exception {
+		int Gr=0;
+		Class.forName("com.mysql.cj.jdbc.Driver");
+		
+	Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/facebook", "root", "root" );
+	PreparedStatement pstmt = conn.prepareStatement("select max(id) from users");
+	  ResultSet rs = pstmt.executeQuery();
+	  while(rs.next()) {
+		  Gr =rs.getInt(1);
+		  System.out.println("max id = " + Gr);
+	  }
+	  return Gr + 1;
+		  
+	  }
+	public UserBean findbyloginid(String loginid)throws Exception{
+		Class.forName("com.mysql.cj.sql.Driver");
+		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/facebook", "root", "root" );
+		PreparedStatement pstmt = conn.prepareStatement("select Login_id from users where id=?");
+		return null;
+		
+	}
+	
+	}
+	
+
